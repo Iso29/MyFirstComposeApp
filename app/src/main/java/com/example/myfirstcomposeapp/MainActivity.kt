@@ -20,6 +20,9 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.ColorScheme
+import androidx.compose.material3.LocalContentColor
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -34,6 +37,10 @@ import androidx.compose.ui.tooling.preview.AndroidUiModes.UI_MODE_NIGHT_YES
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.myfirstcomposeapp.ui.theme.AppTheme
+import com.example.myfirstcomposeapp.ui.theme.AppTypography
+import com.example.myfirstcomposeapp.ui.theme.LocalAppColors
+import com.example.myfirstcomposeapp.ui.theme.LocalAppTextStyles
 import com.example.myfirstcomposeapp.ui.theme.MyFirstComposeAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -138,86 +145,48 @@ fun Layouts() {
     locale = "ru",
     showSystemUi = true,
     backgroundColor = 0xFFD0BCFF,
-    uiMode = UI_MODE_NIGHT_YES
-)
-@Preview(
-    showBackground = true,
-    locale = "ru",
-    showSystemUi = true,
-    backgroundColor = 0xFFD0BCFF,
     uiMode = UI_MODE_NIGHT_NO
 )
 @Composable
 fun LinearLayout() {
-    Column(
-        modifier = Modifier
-            .verticalScroll(rememberScrollState())
-            .fillMaxSize()
-            .systemBarsPadding(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(12.dp)
-    ) {
-        repeat(30){
-            Text(
-                fontSize = 24.sp,
-                fontWeight = FontWeight.Bold,
-                fontStyle = FontStyle.Italic,
-                textAlign = TextAlign.Start,
-                maxLines = 1,
-                color = Color.Black,
-                modifier = Modifier
-                    .fillMaxWidth(0.8f)
-                    .padding(start = 24.dp)
-                    .clip(
-                        shape = RoundedCornerShape(24.dp)
-                    )
-                    .background(
-                        color = Color.Cyan,
-                    )
-                    .padding(vertical = 12.dp),
-                text = "Hello Worldadad qecihwc jqcbje qwccqbccjbqjewcql!"
-            )
-            Text(
-                fontSize = 24.sp,
-                fontWeight = FontWeight.Bold,
-                fontStyle = FontStyle.Italic,
-                textAlign = TextAlign.Start,
-                maxLines = 1,
-                color = Color.Black,
-                modifier = Modifier
-                    .fillMaxWidth(0.8f)
-                    .padding(start = 24.dp)
-                    .clip(
-                        shape = RoundedCornerShape(24.dp)
-                    )
-                    .background(
-                        color = Color.Cyan,
-                    )
-                    .padding(vertical = 12.dp),
-                text = "Hello Worldadad qecihwc jqcbje qwccqbccjbqjewcql!"
-            )
-            Text(
-                fontSize = 24.sp,
-                fontWeight = FontWeight.Bold,
-                fontStyle = FontStyle.Italic,
-                textAlign = TextAlign.Start,
-                maxLines = 1,
-                color = Color.Black,
-                modifier = Modifier
-                    .fillMaxWidth(0.8f)
-                    .padding(start = 24.dp)
-                    .clip(
-                        shape = RoundedCornerShape(24.dp)
-                    )
-                    .background(
-                        color = Color.Cyan,
-                    )
-                    .padding(vertical = 12.dp),
-                text = "Hello Worldadad qecihwc jqcbje qwccqbccjbqjewcql!"
-            )
+    MyFirstComposeAppTheme {
+        val materialColor = MaterialTheme.colorScheme
+        val colorScheme = LocalAppColors.current
+        val textTyp = LocalAppTextStyles.current
+        Column(
+            modifier = Modifier
+                .verticalScroll(rememberScrollState())
+                .fillMaxSize()
+                .systemBarsPadding()
+                .background(
+                    colorScheme.primary
+                ),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(12.dp)
+        ) {
+            repeat(30){
+                Text(
+                    style = AppTypography.bodySmall,
+                    textAlign = TextAlign.Start,
+                    maxLines = 1,
+                    color = Color.Black,
+                    modifier = Modifier
+                        .fillMaxWidth(0.8f)
+                        .padding(start = 24.dp)
+                        .clip(
+                            shape = RoundedCornerShape(24.dp)
+                        )
+                        .background(
+                            color = Color.Cyan,
+                        )
+                        .padding(vertical = 12.dp),
+                    text = "Hello Worldadad qecihwc jqcbje qwccqbccjbqjewcql!"
+                )
+            }
         }
     }
 }
+
 
 //@Preview(
 //    showBackground = true,
